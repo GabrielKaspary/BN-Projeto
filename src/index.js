@@ -3,8 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'; // Importe seus estilos CSS, se necessário
 import App from './App'; // Importe o componente raiz do seu aplicativo
-import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/app'; // Importe o Firebase
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+
 
 // Sua configuração do Firebase
 const firebaseConfig = {
@@ -18,7 +20,7 @@ const firebaseConfig = {
 };
 
 // Inicialize o Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,4 +29,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
+export { app }; 

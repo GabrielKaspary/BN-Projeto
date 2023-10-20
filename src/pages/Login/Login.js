@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import { Link } from 'react-router-dom'; // Importe o componente Link do React Router
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../../index'; // Verifique e atualize o caminho conforme necessário
+import './style.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [senha, setSenha] = useState('');
 
   const handleLogin = () => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    const auth = getAuth(app);
+
+    signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         const user = userCredential.user;
-        // Autenticado com sucesso
 
-        // Gravar dados do usuário no Firebase Realtime Database
-        const userRef = firebase.database().ref('users').child(user.uid);
-        userRef.set({
-          email: user.email,
-          // Outros dados do usuário
-        });
-        console.log('Usuário autenticado e dados gravados:', user);
+        console.log('Usuário autenticado com sucesso:', user);
+        // Redirecione para a página após o login bem-sucedido
       })
       .catch((error) => {
-        // Tratar erros de autenticação
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error('Erro de autenticação:', errorCode, errorMessage);
+        console.error('Erro na autenticação:', errorCode, errorMessage);
       });
   };
 
@@ -40,10 +36,12 @@ const Login = () => {
       <input
         type="password"
         placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={senha}
+        onChange={(e) => setSenha(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin}>Entrar</button>
+
+      <Link to="/cadastro">Não possui cadastro?</Link> {/* Adicione o link para a página de cadastro */}
     </div>
   );
 };

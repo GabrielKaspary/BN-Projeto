@@ -5,10 +5,7 @@ import Header from "./components/Header";
 function Home() {
     return (
         <div>
-            <main className="main">
-                <div className="navbar">Navbar</div>
-                <div className="feed">feed </div>
-            </main>
+            <p>Home</p>
         </div> 
    );
 }

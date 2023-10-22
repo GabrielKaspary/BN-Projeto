@@ -8,9 +8,17 @@
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
     <script src="js/firebase-init.js"></script>
     <script src="js/criarpost.js"></script>
+    <script src="js/auth-guard.js"></script>
+    <link rel="stylesheet" href="css/criarpost.css">
+ 
 </head>
 <body>
-    <h1>Criar um Post</h1>
+    
+    <div class="search-bar">
+        Criar post
+        <button type="button" class="solid" onclick="location.href='home.html'" >Tela inicial</button>
+    </div>
+    
     <form id="post-form">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required><br>

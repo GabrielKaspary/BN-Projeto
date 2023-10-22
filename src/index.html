@@ -13,8 +13,6 @@
   <script src="js/login.js"></script>
   <script src="js/loading.js"></script>
   <link rel="stylesheet" href="css/loading.css">
-
-
 </head>
 
 <body>
@@ -34,14 +32,16 @@
           <div class="error" id="password-required-error">Senha é obrigatória</div>
         </div>
         <div>
-          <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()"
-            disabled="true">Recuperar senha</button>
+          <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()">Esqueci minha senha</button>
         </div>
         <div>
-          <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
+          <button type="button" class="solid" id="login-button" onclick="login()">Entrar</button>
         </div>
-      </form>
-    </div>
+        <div>
+          <button type="button" class="solid" onclick="location.href='cadastro.html'" >Cadastrar-se</button>
+        </div>
+  </form>
+  </div>
   </div>
 </body>
 

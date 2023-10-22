@@ -5,10 +5,15 @@ const postsRef = database.ref('posts');
 // Firebase Storage
 const storage = firebase.storage();
 
-// Manipular o envio do formulário
+
+// Função para gerar um ID único
+function generateUniqueId() {
+    return Date.now().toString() + Math.random().toString(36).substr(2, 9);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('post-form');
-    
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -18,15 +23,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const descricao = document.getElementById('descricao').value;
         const imagensInput = document.getElementById('imagens');
 
+        // Crie um ID único para o post
+        const postId = generateUniqueId(); // Use a fu
+
         // Realizar upload das imagens para o Firebase Storage
         const imagensFiles = imagensInput.files;
         const imagensUrls = [];
-
         const promises = [];
 
         for (let i = 0; i < imagensFiles.length; i++) {
             const imagemFile = imagensFiles[i];
-            const imagemRef = storage.ref('imagens/' + imagemFile.name);
+            const imagemRef = storage.ref('imagens/' + postId + '/' + imagemFile.name); // Use o postId como parte do caminho
 
             const uploadTask = imagemRef.put(imagemFile);
 
@@ -37,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         imagensUrls.push(downloadURL);
 
                         if (imagensUrls.length === imagensFiles.length) {
-                            // Salvar os dados, incluindo as URLs das imagens, no Firebase Realtime Database
-                            postsRef.push({
+                            // Salvar os dados, incluindo as URLs das imagens, no Firebase Realtime Database com o postId
+                            postsRef.child(postId).set({
                                 titulo: titulo,
                                 cidade: cidade,
                                 hora: hora,

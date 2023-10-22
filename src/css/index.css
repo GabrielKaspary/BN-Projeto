@@ -66,7 +66,8 @@ body.login-page {
 button {
   background-color: white;
   color: rgb(0, 0, 0);
-  padding: 10px 20px;
+  width: 150px; /* Largura fixa */
+  height: 40px; /* Altura fixa */
   border: none;
   border-radius: 5px;
   cursor: pointer;

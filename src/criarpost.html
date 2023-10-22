@@ -10,14 +10,29 @@
     <script src="js/criarpost.js"></script>
     <script src="js/auth-guard.js"></script>
     <link rel="stylesheet" href="css/criarpost.css">
+    <link rel="stylesheet" href="css/home.css">
  
 </head>
 <body>
+    <header id="header" >
+        <img src="icons\BNlogo.png" alt="Imagem de Fundo">
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar por posts, usuários, etc.">
+            <button id="create-post" onclick="location.href='criarpost.html'">Criar Novo Post</button>
+        </div>
+        <div class="user-info">
+
+            <button id="notifications">3</button>
+            <button class="grid-item" onclick='logout()'>Sair <i class="fas fa-sign-out-alt"></i></button>
+        </div>
+        <div class="search-bar">
+            <button type="button" class="solid" onclick="location.href='home.html'" >Tela inicial</button>
+        </div>
+    </header>
+   
+</body>
+<body>
     
-    <div class="search-bar">
-        Criar post
-        <button type="button" class="solid" onclick="location.href='home.html'" >Tela inicial</button>
-    </div>
     
     <form id="post-form">
         <label for="titulo">Título:</label>

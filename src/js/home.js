@@ -25,9 +25,15 @@ var storage = firebase.storage();
 var database = firebase.database();
 var postsRef = database.ref("posts");
 
-// Função para carregar e exibir os dados
-// ...
+// Função para criar uma linha divisória
+function criarLinhaDivisoria() {
+    var linhaDivisoria = document.createElement("hr");
+    linhaDivisoria.className = "post-divider";
+    return linhaDivisoria;
+}
 
+
+// Função para carregar e exibir os dados
 function carregarDados() {
     postsRef.once("value").then(function (snapshot) {
         var posts = snapshot.val();
@@ -35,6 +41,7 @@ function carregarDados() {
 
         for (var postId in posts) {
             var post = posts[postId];
+
             var postElement = document.createElement("div");
             postElement.className = "post";
 
@@ -50,25 +57,21 @@ function carregarDados() {
             var postHora = document.createElement("p");
             postHora.textContent = "Hora: " + post.hora;
 
-            // Função para carregar a imagem do Firebase Storage e adicionar ao elemento após o carregamento
-            function loadImage() {
-                var imageRef = storage.ref("imagens/" + postId + "/PCB - Modulo.png");
-                imageRef.getDownloadURL().then(function (url) {
-                    var postImage = document.createElement("img");
-                    postImage.src = url;
-                    postElement.appendChild(postImage);
-                });
-            }
+            var postImage = document.createElement("img");
+            postImage.src = post.imagens[0];
 
-            // Chame a função para carregar a imagem
-            loadImage();
+            postImage.style.width = "25%";
+            postImage.style.height = "auto";
 
             postElement.appendChild(postTitle);
             postElement.appendChild(postDescricao);
             postElement.appendChild(postCidade);
             postElement.appendChild(postHora);
+            postElement.appendChild(postImage);
 
+            // Adicione a linha divisória após cada post
             postContainer.appendChild(postElement);
+            postContainer.appendChild(criarLinhaDivisoria());
         }
     });
 }

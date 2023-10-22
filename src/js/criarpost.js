@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 imagens: imagensUrls
                             });
 
+                            alert('Post publicado com sucesso!');
                             // Limpar o formulário após o envio
                             form.reset();
                         }

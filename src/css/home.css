@@ -1,0 +1,89 @@
+/* Estilos para o cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(98, 98, 98); /* Cor de exemplo: cinza claro (rgb(98, 98, 98)) */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#create-post {
+    background-color: #000; /* Cor preta para o botão */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Fundo cinza claro */
+body {
+    background-color: #d0c9c9; /* Cor de fundo cinza claro */
+}
+
+/* Restante do CSS permanece o mesmo */
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#notifications {
+    background-color: #ff4b4b; /* Cor de exemplo para notificações não lidas */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* Estilos para o conteúdo principal e a barra lateral (main e aside) */
+main {
+    width: 70%;
+    float: left;
+}
+
+aside {
+    width: 30%;
+    float: left;
+    background-color: #f0f0f0; /* Cor de fundo da barra lateral */
+    padding: 10px;
+}
+
+/* Estilos adicionais podem ser definidos conforme necessário */
+
+/* Estilos para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    .search-bar {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+}

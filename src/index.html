@@ -1,17 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html>
+
 <head>
-  <title>Tela de Login</title>
-  <link rel="stylesheet" type="text/css" href="login.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-  <div class="login-container">
-    <h1>Login</h1>
-    <form>
-      <input type="text" placeholder="Nome de usuário" required>
-      <input type="password" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
+    <div class="login-container">
+        <div class="login-box">
+            <img src="icons\BNlogo.png" alt="Imagem de Fundo">
+            <form>
+                <div class="form-group">
+                    <div><label>Email</label></div>
+                    <input type="email" name="email" id="email" placeholder="seu@email.com"/>
+                    <div class="error" id="email-required-error">Email é obrigatório</div>
+                    <div class="error" id="email-invalid-error">Email é inválido</div>
+                </div>
+                <div class="form-group">
+                    <div><label>Senha</label></div>
+                    <input type="password" name="password" id="password" placeholder="Senha" />
+                    <div class="error" id="password-required-error">Senha é obrigatória</div>
+                </div>
+
+                <div>
+                    <button type="button" class="solid" id="login-button" disabled="true">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
+
 </html>

@@ -4,9 +4,10 @@
     <title>Criar um Post</title>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-storage-compat.js"></script> <!-- Adicione a biblioteca de armazenamento -->
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
     <script src="js/firebase-init.js"></script>
-
+    <script src="js/criarpost.js"></script>
 </head>
 <body>
     <h1>Criar um Post</h1>
@@ -20,7 +21,7 @@
         <label for="cidade">Cidade:</label>
         <input type="text" id="cidade" name="cidade" required><br>
 
-        <label for "hora">Hora:</label>
+        <label for="hora">Hora:</label>
         <input type="time" id="hora" name="hora" required><br>
 
         <label for="descricao">Descrição do Acontecido:</label><br>
@@ -28,7 +29,6 @@
 
         <input type="submit" value="Publicar">
     </form>
-
-    <script src="js/criarpost.js"></script>
+    
 </body>
 </html>

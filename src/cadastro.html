@@ -5,6 +5,15 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+    <script src="js/firebase-init.js"></script>
+    <script src="js/validations.js"></script>
+    <script src="js/loading.js"></script>
+    <script src="js/register.js"></script>
+    <link rel="stylesheet" href="css/loading.css">
 </head>
 
 <body>
@@ -14,27 +23,36 @@
             <form>
                 <div class="form-group">
                     <div><label>Email</label></div>
-                    <input type="email" name="email" id="email" placeholder="seu@email.com"/>
-                    <div class="error" id="email-required-error">Email é obrigatório</div>
-                    <div class="error" id="email-invalid-error">Email é inválido</div>
+                    <input type="email" placeholder="seu@email.com" onchange="onChangeEmail()" id="email" />
+                    <div class="error" id="email-required-error">
+                        Email é obrigatório
+                    </div>
+                    <div class="error" id="email-invalid-error">
+                        Email é inválido
+                    </div>
                 </div>
                 <div class="form-group">
                     <div><label>Senha</label></div>
-                    <input type="password" name="password" id="password" placeholder="Senha" />
-                    <div class="error" id="password-required-error">Senha é obrigatória</div>
+                    <input type="password" placeholder="Senha" id="password" onchange="onChangePassword()" />
+                    <div class="error" id="password-required-error">
+                        Senha é obrigatório
+                    </div>
+                    <div class="error" id="password-min-length-error">
+                        Senha deve ter pelo menos 6 caracteres
+                    </div>
                 </div>
                 <div class="form-group">
-                    <div><label>Nome</label></div>
-                    <input type="name" name="name" id="name" placeholder="Nome"/>
-                    <div class="error" id="password-required-error">Nome é obrigatória</div>
-                </div>
-                <div class="form-group">
-                    <div><label>Cidade</label></div>
-                    <input type="cidade" name="cidade" id="cidade" placeholder="Cidade"/>
-                    <div class="error" id="password-required-error">Cidade é obrigatória</div>
+                    <div><label>Confirmar senha</label></div>
+                    <input type="password" placeholder="Confirmar senha" id="confirmPassword"
+                        onchange="onChangeConfirmPassword()" />
+                    <div class="error" id="password-doesnt-match-error">
+                        Senha e Confirmar senha devem ser iguais
+                    </div>
                 </div>
                 <div>
-                    <button type="button" class="solid" id="login-button" disabled="true">Confirmar</button>
+                    <button type="button" class="solid" disabled="true" onclick="register()" id="register-button">
+                        Registrar
+                    </button>
                 </div>
             </form>
         </div>

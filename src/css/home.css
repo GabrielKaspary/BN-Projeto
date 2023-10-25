@@ -1,144 +1,47 @@
-/* Estilos para o cabeçalho */
-
+/* Estilo do cabeçalho */
 #header {
-    position: fixed;
-    top: 0; /* Fixa o cabeçalho no topo da janela */
-    left: 0;
-    right: 0; /* Ocupa toda a largura da janela */
-    background-color: rgb(98, 98, 98); /* Cor de fundo do cabeçalho */
-    z-index: 1000; /* Certifica-se de que o cabeçalho fique na frente de outros elementos */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
-  }
-  
-  /* Estilo adicional do cabeçalho, como altura, margens, etc. */
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(98, 98, 98);
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(98, 98, 98); /* Cor de exemplo: cinza claro (rgb(98, 98, 98)) */
-    color: #fff; /* Cor do texto */
-    padding: 10px 20px;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-}
-
-input[type="text"] {
-    width: 300px;
-    padding: 5px;
-    margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(98, 98, 98);
+  color: #fff;
+  padding: 10px 20px;
 }
 
 #create-post {
-    background-color: #000; /* Cor preta para o botão */
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Adicione margem à esquerda para separar os botões */
 }
 
-/* Fundo cinza claro */
-body {
-    background-color: #d0c9c9; /* Cor de fundo cinza claro */
+.user-info button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Adicione margem à esquerda para separar os botões */
 }
-
-/* Restante do CSS permanece o mesmo */
-
-
-.user-info {
-    display: flex;
-    align-items: center;
+.conteudo {
+  margin-top: 100px; /* Ajuste o valor conforme necessário para o espaçamento desejado */
 }
+.image {
+  width: 50px; /* Defina a largura desejada */
+  height: 50px; /* Defina a altura desejada */
 
-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-#notifications {
-    background-color: #ff4b4b; /* Cor de exemplo para notificações não lidas */
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-}
-
-/* Estilos para o conteúdo principal e a barra lateral (main e aside) */
-main {
-    width: 70%;
-    float: left;
-}
-
-aside {
-    width: 30%;
-    float: left;
-    background-color: #f0f0f0; /* Cor de fundo da barra lateral */
-    padding: 10px;
-}
-
-/* Estilo para a lista de posts */
-#post-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #post-list li {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    cursor: pointer;
-  }
-  
-  #post-list li:hover {
-    background-color: #e6e6e6;
-  }
-  
-  /* Estilo para a postagem completa */
-  .post-completo {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 10px;
-  }
-  
-  .post-completo h2 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .post-completo img {
-    max-width: 100%;
-    margin-top: 10px;
-  }
-  
-  .post-completo p {
-    margin-top: 10px;
-  }
-  
-
-/* Estilos adicionais podem ser definidos conforme necessário */
-
-/* Estilos para dispositivos móveis */
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-    }
-
-    .search-bar {
-        margin-bottom: 10px;
-    }
-
-    input[type="text"] {
-        width: 100%;
-    }
 }

@@ -1,10 +1,33 @@
+/* Estilos gerais */
+body {
+    background-color: #d0c9c9;
+    margin: 0; /* Remova margens padrão do corpo */
+    padding: 0; /* Remova preenchimento padrão do corpo */
+}
+.conteudo {
+    margin-top: 100px; /* Ajuste o valor conforme necessário para o espaçamento desejado */
+}
+
 header {
+    position: fixed; /* Torna o cabeçalho fixo na parte superior da janela */
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(98, 98, 98);
     color: #fff;
-    padding: 10px 20px;
+   padding: 10px 0px;
+    z-index:999; /* Garante que o cabeçalho esteja acima de outros elementos */
+}
+
+#titulo {
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+    color: #a7a7a7; /* Cor do texto (pode ser personalizada) */
+    margin-top: 10px; /* Espaço superior */
+    text-align: center; /* Alinhamento de texto ao centro */
 }
 
 .search-bar {
@@ -18,18 +41,13 @@ input[type="text"] {
     margin-right: 10px;
 }
 
-#create-post {
+#create-post, .solid {
     background-color: #000;
     color: #fff;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Fundo cinza claro */
-body {
-    background-color: #d0c9c9;
+   
 }
 
 /* Estilos para o formulário */
@@ -40,6 +58,7 @@ form {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Espaço superior entre o cabeçalho e o formulário */
 }
 
 label {
@@ -64,12 +83,6 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
     margin-top: 20px;
 }
 
@@ -79,11 +92,18 @@ input[type="submit"] {
         flex-direction: column;
     }
 
-    .search-bar {
-        margin-bottom: 10px;
-    }
-
     input[type="text"] {
         width: 100%;
     }
+}
+.image {
+    width: 50px; /* Defina a largura desejada */
+    height: 50px; /* Defina a altura desejada */
+
+  }
+  .tittle {
+    color: white;
+    font-family: bold;
+    font-size: 30px; 
+    text-align: center;
 }

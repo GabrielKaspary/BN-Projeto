@@ -17,9 +17,12 @@
     <header id="header">
         <img src="icons\BNlogo.png" alt="Imagem de Fundo" class="image">
         <div class="search-bar">
-            <input type="text" id="barra-de-pesquisa" placeholder="Pesquisar...">
-            <button id="botao-pesquisa">Pesquisar</button>
+            <input class="barra" type="text" id="barra-de-pesquisa" placeholder="Pesquisar...">
+            <button class="botao-pesquisa" id="botao-pesquisa">Pesquisar</button>
             <button id="create-post" onclick="location.href='criarpost.html'">Criar Novo Post</button>
+
+            <!-- Adicione o botão para acessar o chat -->
+            <button id="chat-button" onclick="location.href='chat.html'">Chat</button>
         </div>
         <div class="user-info">
             <button id="sair-button" class="grid-item" onclick="logout()">Sair <i class="fas fa-sign-out-alt"></i></button>

@@ -52,3 +52,58 @@ header {
   padding: 10px 15px;
   border-radius: 5px;
 }
+
+.barra {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px; /* Adicione margem à direita para separar os elementos */
+}
+
+.botao-pesquisa {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.post-container {
+  text-align: center; /* Centralize o conteúdo horizontalmente */
+  margin: 0 auto; /* Centralize o contêiner na página */
+}
+
+.post {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 20px auto; /* Centralize cada post na página */
+  max-width: 600px; /* Define uma largura máxima para os posts */
+  text-align: left; /* Restaure o alinhamento à esquerda do conteúdo dos posts */
+}
+
+.post h2 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  text-align: center; /* Centralize o texto do título */
+}
+
+.post p {
+  margin: 5px 0;
+  text-align: center; /* Centralize o texto dos parágrafos */
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Centralize a imagem horizontalmente */
+  vertical-align: center; /* Centralize a imagem verticalmente */
+}
+
+.divisoria {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

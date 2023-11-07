@@ -1,61 +1,131 @@
-body {
-    font-family: Arial, sans-serif;
-}
-
-.chat-container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.sidebar {
-    width: 20%;
-    background-color: #f2f2f2;
-    padding: 10px;
-}
-
-.user {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 5px;
-    background-color: #fff;
-}
-
-.chat {
-    width: 75%;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    padding: 10px;
-}
-
-.conversation {
-    height: 300px;
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.message-input {
+/* Estilo do cabeçalho */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(98, 98, 98);
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-}
-
-input[type="text"] {
-    width: 70%;
-    padding: 5px;
-}
-
-button {
-    padding: 5px 10px;
-    background-color: #007bff;
+    background-color: rgb(98, 98, 98);
+    color: #fff;
+    padding: 20px; /* Aumente o padding para centralizar o texto verticalmente */
+    font-size: 24px; /* Aumente o tamanho da fonte */
+  }
+  
+  #create-post {
+    background-color: #000;
     color: #fff;
     border: none;
+    padding: 15px 20px; /* Aumente o padding para centralizar o botão verticalmente */
+    border-radius: 5px;
     cursor: pointer;
-}
+    margin-left: 20px; /* Aumente a margem à esquerda para separar os botões */
+    font-size: 18px; /* Aumente o tamanho da fonte */
+  }
+  
+  .user-info button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 20px; /* Aumente o padding para centralizar o botão verticalmente */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px; /* Aumente a margem à esquerda para separar os botões */
+    font-size: 18px; /* Aumente o tamanho da fonte */
+  }
+  
+  /* Estilo do contêiner do chat */
+  .chat-container {
+    display: flex;
+    justify-content: center; /* Centralize horizontalmente */
+    align-items: center; /* Centralize verticalmente */
+    margin: 20px;
+  }
+  
+  .chat {
+    width: 70%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center; /* Centralize o texto horizontalmente */
+  }
+  
+  .conversations,
+  .messages {
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 28px; /* Aumente o tamanho da fonte */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #conversations {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  #createConversationButton {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 20px; /* Aumente o padding para centralizar o botão verticalmente */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Aumente a margem superior */
+    font-size: 18px; /* Aumente o tamanho da fonte */
+  }
+  
+  #messageList {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  #messageInput {
+    width: 100%;
+    padding: 20px; /* Aumente o padding para centralizar o texto verticalmente */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px; /* Aumente a margem superior */
+    font-size: 18px; /* Aumente o tamanho da fonte */
+  }
+  
+  #sendButton {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 20px; /* Aumente o padding para centralizar o botão verticalmente */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Aumente a margem superior */
+    font-size: 18px; /* Aumente o tamanho da fonte */
+  }
+  
+  #sidebar {
+    width: 28%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center; /* Centralize o texto horizontalmente */
+  }
+  
+  #userList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Resto do seu CSS aqui... */
+  

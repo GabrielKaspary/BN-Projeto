@@ -1,113 +1,97 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Função para obter o usuário logado
-    function getCurrentUser() {
-        return new Promise((resolve, reject) => {
-            const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-                unsubscribe();
-                resolve(user);
-            }, reject);
-        });
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    const db = firebase.database();
+    const auth = firebase.auth();
 
-    // Função para listar os usuários do Realtime Database
-    function listUsers() {
-        const usersRef = firebase.database().ref('usuarios');
+    const conversationsRef = db.ref("conversations");
+    const messagesRef = db.ref("messages");
+    const usersRef = db.ref("users");
 
-        return usersRef.once('value')
-            .then(snapshot => {
-                const userList = [];
-                snapshot.forEach(childSnapshot => {
-                    const user = childSnapshot.val();
-                    userList.push(user);
+    let currentUser;
+
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            currentUser = user;
+            const emailDoUsuarioLogado = currentUser.email;
+            console.log("Usuário logado com o email:", emailDoUsuarioLogado);
+            initChat();
+        } else {
+            // Implemente a lógica de autenticação aqui (login, registro, etc.).
+        }
+    });
+
+    function initChat() {
+        const conversationsList = document.getElementById("conversations");
+        const userList = document.getElementById("userList");
+        const createConversationButton = document.getElementById("createConversationButton");
+        const messageList = document.getElementById("messageList");
+        const messageInput = document.getElementById("messageInput");
+        const sendButton = document.getElementById("sendButton");
+
+        conversationsRef.on("value", (snapshot) => {
+            conversationsList.innerHTML = "";
+            snapshot.forEach((conversationSnapshot) => {
+                const conversation = conversationSnapshot.val();
+                const conversationItem = document.createElement("li");
+                conversationItem.textContent = conversation.name;
+                conversationItem.addEventListener("click", () => {
+                    loadMessages(conversationSnapshot.key);
                 });
-                return userList;
+                conversationsList.appendChild(conversationItem);
             });
-    }
-
-    // Função para atualizar a coluna lateral com a lista de usuários
-    function updateSidebar(userList) {
-        const userListElement = document.getElementById('userList');
-        userListElement.innerHTML = '';
-
-        userList.forEach(user => {
-            const userItem = document.createElement('li');
-            userItem.textContent = user.name || user.email || user.uid;
-            userItem.addEventListener('click', () => {
-                // Implemente a lógica para iniciar uma conversa com o usuário clicado
-                console.log(`Iniciar conversa com ${userItem.textContent}`);
-            });
-            userListElement.appendChild(userItem);
         });
-    }
 
-    // Função para enviar uma mensagem
-    function sendMessage(user1, user2, messageText) {
-        const conversationId = `${user1}_${user2}`;
-        const messagesRef = firebase.database().ref('usuarios/' + conversationId);
-
-        const message = {
-            text: messageText,
-            timestamp: firebase.database.ServerValue.TIMESTAMP,
-            sender: user1,
-        };
-
-        messagesRef.push(message);
-    }
-
-    // Função para ouvir novas mensagens
-    function listenForNewMessages(user1, user2) {
-        const conversationId = `${user1}_${user2}`;
-        const messagesRef = firebase.database().ref('usuarios/' + conversationId);
-
-        messagesRef.on('child_added', (snapshot) => {
-            const message = snapshot.val();
-            const messageElement = document.createElement('div');
-            messageElement.innerText = `${message.sender}: ${message.text}`;
-            document.getElementById('messages').appendChild(messageElement);
-        });
-    }
-
-    // Chame a função para listar os usuários e, quando os usuários forem obtidos, atualize a coluna lateral
-    getCurrentUser()
-        .then(user => {
-            if (user) {
-                console.log('Usuário logado:', user.email);
-                const user1 = user.uid;
-                const user2 = 'outro_usuario';
-
-                return listUsers()
-                    .then(userList => {
-                        if (userList) {
-                            updateSidebar(userList);
-                            listenForNewMessages(user1, user2);
-                            const sendButton = document.getElementById('sendButton');
-                            const messageInput = document.getElementById('messageInput');
-
-                            sendButton.addEventListener('click', () => {
-                                const messageText = messageInput.value.trim();
-                                if (messageText) {
-                                    sendMessage(user1, user2, messageText);
-                                    messageInput.value = '';
-                                }
-                            });
-
-                            messageInput.addEventListener('keypress', (e) => {
-                                if (e.key === 'Enter') {
-                                    const messageText = messageInput.value.trim();
-                                    if (messageText) {
-                                        sendMessage(user1, user2, messageText);
-                                        messageInput.value = '';
-                                    }
-                                }
-                            });
-                        }
+        usersRef.on("value", (snapshot) => {
+            userList.innerHTML = "";
+            snapshot.forEach((userSnapshot) => {
+                const user = userSnapshot.val();
+                if (user.email !== currentUser.email) {
+                    const userItem = document.createElement("li");
+                    userItem.textContent = user.email;
+                    userItem.addEventListener("click", () => {
+                        createConversation(user.email);
                     });
-            } else {
-                console.log('Nenhum usuário logado');
-                return null;
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
+                    userList.appendChild(userItem);
+                }
+            });
         });
+
+        createConversationButton.addEventListener("click", () => {
+            const conversationName = prompt("Digite o nome da conversa:");
+            if (conversationName) {
+                createConversation(conversationName);
+            }
+        });
+
+        let selectedConversationId = null;
+
+        function loadMessages(conversationId) {
+            selectedConversationId = conversationId;
+            messageList.innerHTML = "";
+            messagesRef.child(conversationId).on("child_added", (snapshot) => {
+                const message = snapshot.val();
+                const messageElement = document.createElement("div");
+                messageElement.innerText = `${message.sender}: ${message.text}`;
+                messageList.appendChild(messageElement);
+            });
+        }
+
+        function createConversation(conversationName) {
+            const newConversationRef = conversationsRef.push();
+            const conversationId = newConversationRef.key;
+            newConversationRef.set({ name: conversationName });
+            loadMessages(conversationId);
+        }
+
+        sendButton.addEventListener("click", () => {
+            const messageText = messageInput.value.trim();
+            if (messageText && selectedConversationId) {
+                const message = {
+                    text: messageText,
+                    sender: currentUser.email,
+                };
+                messagesRef.child(selectedConversationId).push(message);
+                messageInput.value = "";
+            }
+        });
+    }
 });

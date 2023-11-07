@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Chat</title>
+    <title>Chat App</title>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
@@ -13,17 +13,25 @@
 <body>
     <div class="chat-container">
         <div class="chat">
-            <div class="messages" id="messages"></div>
-            <input type="text" id="messageInput" placeholder="Digite sua mensagem">
-            <button id="sendButton">Enviar</button>
+            <div class="conversations">
+                <h2>Conversas</h2>
+                <ul id="conversations">
+                    <!-- Lista de conversas -->
+                </ul>
+                <button id="createConversationButton">Criar Conversa</button>
+            </div>
+            <div class="messages">
+                <h2>Mensagens</h2>
+                <ul id="messageList">
+                    <!-- Lista de mensagens da conversa selecionada -->
+                </ul>
+                <input type="text" id="messageInput" placeholder="Digite sua mensagem">
+                <button id="sendButton">Enviar</button>
+            </div>
         </div>
+       
     </div>
-    <div id="sidebar">
-        <h2>Usuários</h2>
-        <ul id="userList">
-            
-        </ul>
-    </div>
+    
     <script src="js/chat.js"></script>
 </body>
 

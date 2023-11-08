@@ -8,7 +8,7 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 
 
-// Sua configuração do Firebase
+// API do Firebase
 const firebaseConfig = {
   apiKey: "sua-api-key",
   authDomain: "seu-auth-domain",
@@ -16,7 +16,7 @@ const firebaseConfig = {
   storageBucket: "seu-storage-bucket",
   messagingSenderId: "seu-messaging-sender-id",
   appId: "seu-app-id",
-  measurementId: "seu-measurement-id" // Opcional
+  measurementId: "seu-measurement-id" 
 };
 
 // Inicialize o Firebase

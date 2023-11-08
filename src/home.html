@@ -22,14 +22,14 @@
             <button id="create-post" onclick="location.href='criarpost.html'">Criar Novo Post</button>
 
             <!-- Adicione o botão para acessar o chat -->
-            <button id="chat-button" onclick="location.href='chat.html'">Chat</button>
+            <button id="chat-button" class="chat-button" onclick="location.href='chat.html'">Chat</button>
         </div>
         <div class="user-info">
-            <button id="sair-button" class="grid-item" onclick="logout()">Sair <i class="fas fa-sign-out-alt"></i></button>
+            <button id="sair-button" class="grid-item" onclick="logout()"> Sair <i class="fas fa-sign-out-alt"></i></button>
         </div>
     </header>
 
-    <div id="post-container" class="conteudo post-container"></div>
+    <div id="post-container" class="conteudo"></div>
 
     <script>
         // Obtém os elementos da barra de pesquisa e do botão de pesquisa

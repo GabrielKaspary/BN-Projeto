@@ -42,7 +42,7 @@
   }
   
   /* Estilo do contêiner do chat */
-  .chat-container {
+  .conteudo {
     display: flex;
     justify-content: center; /* Centralize horizontalmente */
     align-items: center; /* Centralize verticalmente */
@@ -128,4 +128,14 @@
   }
   
   /* Resto do seu CSS aqui... */
-  
+  .image {
+    width: 50px; /* Defina a largura desejada */
+    height: 50px; /* Defina a altura desejada */
+
+  }
+  .tittle {
+    color: white;
+    font-family: bold;
+    font-size: 30px; 
+    text-align: center;
+}

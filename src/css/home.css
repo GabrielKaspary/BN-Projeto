@@ -107,3 +107,11 @@ header {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.chat-button{
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
